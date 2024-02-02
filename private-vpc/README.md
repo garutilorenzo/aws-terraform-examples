@@ -17,6 +17,8 @@ No Requirement
 | `my_public_ip_cidr` | `yes`        | A public ip CIDR allowed to reach the OCI resources |
 | `environment`  | `no`  | Current work environment (Example: staging/dev/prod). Default: staging |
 | `vpc_cidr_block`  | `no`  | VPC CIDR. Default: 172.68.0.0/16 |
+| `vpc_newbits`  | `no`  | newbits used to calculate the private and public subnet CIDRs using [cidrsubnet fn](https://developer.hashicorp.com/terraform/language/functions/cidrsubnet). Default: 8|
+| `private_subnet_offset`  | `no`  | Offset used to calculate the private subnet CIDRs using cidrsubnet fn. Default: 3 |
 | `domain_name`  | `no`  |  The suffix domain name to use by default when resolving non Fully Qualified Domain Names. Default: aws-cloud.compute.internal. *NOTE* this variable will be interpoladed with the region variable, the final result will be: ${var.region}-${var.domain_name}  |
 | `dns_servers`  | `no`  | List of name servers to configure in /etc/resolv.conf. If you want to use the default AWS nameservers you should set this to AmazonProvidedDNS. Default: AmazonProvidedDNS |
 
