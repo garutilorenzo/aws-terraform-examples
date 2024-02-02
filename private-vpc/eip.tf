@@ -1,5 +1,5 @@
 resource "aws_eip" "nat_eip" {
-  domain     = true
+  domain     = "vpc"
   depends_on = [aws_internet_gateway.vpc_gw]
   tags = merge(
     local.tags,
