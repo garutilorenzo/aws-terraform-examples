@@ -1,7 +1,9 @@
 variable "region" {}
 
-variable "my_public_ip_cidr" {
-  type = string
+variable "my_public_ip_cidrs" {
+  type    = list(string)
+  default = []
+  description = "List of public IP CIDRs to allow"
 }
 
 variable "vpc_cidr_block" {

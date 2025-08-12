@@ -13,8 +13,8 @@ No Requirement
 
 | Var   | Required | Desc |
 | ------- | ------- | ----------- |
-| `region`       | `yes`       | set the correct OCI region based on your needs  |
-| `my_public_ip_cidr` | `yes`        | A public ip CIDR allowed to reach the OCI resources |
+| `region`       | `yes`       | set the correct region based on your needs  |
+| `my_public_ip_cidrs` | `yes`        | A list of public ip CIDR allowed to reach the resources |
 | `environment`  | `no`  | Current work environment (Example: staging/dev/prod). Default: staging |
 | `vpc_cidr_block`  | `no`  | VPC CIDR. Default: 172.68.0.0/16 |
 | `vpc_newbits`  | `no`  | newbits used to calculate the private and public subnet CIDRs using [cidrsubnet fn](https://developer.hashicorp.com/terraform/language/functions/cidrsubnet). Default: 8|
