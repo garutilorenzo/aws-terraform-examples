@@ -1,15 +1,13 @@
 output "public_subnet_ids" {
-  value = {
-    for subnet, details in aws_subnet.public_subnets:
-    subnet => details
-  }
+  value = toset([
+    for s in aws_subnet.public_subnets : s.id
+  ])
 }
 
 output "private_subnet_ids" {
-  value = {
-    for subnet, details in aws_subnet.private_subnets:
-    subnet => details
-  }
+  value = toset([
+    for s in aws_subnet.private_subnets : s.id
+  ])
 }
 
 output "security_group_id" {
