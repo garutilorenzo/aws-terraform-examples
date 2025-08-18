@@ -2,7 +2,7 @@ resource "aws_subnet" "public_subnets" {
   for_each          = toset(data.aws_availability_zones.available_az.zone_ids)
   vpc_id            = aws_vpc.main_vpc.id
   cidr_block          = cidrsubnet(var.vpc_cidr_block, var.vpc_newbits, substr(each.key, -1, -1) + var.private_subnet_offset)
-  availability_zone = data.aws_availability_zones.az[each.key].name
+  availability_zone = data.aws_availability_zone.az[each.key].name
 
   map_public_ip_on_launch                     = true
   enable_resource_name_dns_a_record_on_launch = true
@@ -20,7 +20,7 @@ resource "aws_subnet" "private_subnets" {
   for_each          = toset(data.aws_availability_zones.available_az.zone_ids)
   vpc_id            = aws_vpc.main_vpc.id
   cidr_block          = cidrsubnet(var.vpc_cidr_block, var.vpc_newbits, substr(each.key, -1, -1) + var.private_subnet_offset)
-  availability_zone = data.aws_availability_zones.az[each.key].name
+  availability_zone = data.aws_availability_zone.az[each.key].name
 
   map_public_ip_on_launch                     = false
   enable_resource_name_dns_a_record_on_launch = true
