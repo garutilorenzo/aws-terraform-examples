@@ -3,20 +3,6 @@ resource "aws_security_group" "allow-strict" {
   name        = "allow-strict"
   description = "security group that allows ssh and all egress traffic"
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    protocol  = "-1"
-    self      = true
-    from_port = 0
-    to_port   = 0
-  }
-
   tags = merge(
     local.tags,
     {
@@ -32,5 +18,23 @@ resource "aws_security_group_rule" "ingress_ssh" {
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = var.my_public_ip_cidrs
+  security_group_id = aws_security_group.allow-strict.id
+}
+
+resource "aws_security_group_rule" "ingress_self" {
+  type              = "ingress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  self              = true
+  security_group_id = aws_security_group.allow-strict.id
+}
+
+resource "aws_security_group_rule" "output_all" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.allow-strict.id
 }
