@@ -1,6 +1,6 @@
 # VPC with private and public subnet
 
-This module will deploy a one VCN with one public subnet ad one private subnet on each AZ of the region you choose. Also this modules deploy a security list with the following rueles:
+This module will deploy a one VPC with one public subnet ad one private subnet on each AZ of the region you choose. Also this modules deploy a security list with the following rueles:
 
 * egress, all traffic allowed
 * ingress, traffica allowed on port 22 only from my_public_ip_cidr
